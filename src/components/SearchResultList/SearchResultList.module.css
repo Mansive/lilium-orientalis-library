@@ -1,6 +1,7 @@
 .searchResultList {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
   row-gap: 0.4rem;
-  width: 80%;
+  width: 50%;
 }
