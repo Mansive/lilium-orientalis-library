@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { OrthographicCamera, useFBO } from "@react-three/drei";
+import { OrthographicCamera } from "@react-three/drei";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -27,10 +27,6 @@ const NetworkShader = () => {
   const screenMeshRef = useRef<THREE.Mesh>(null!);
   const networkMaterialRef = useRef<NetworkMaterial>(null!);
 
-  // gaussian blur
-  const renderTarget1 = useFBO(); // horizontal blur
-  const renderTarget2 = useFBO(); // vertical blur
-
   useEffect(() => {
     const onWindowResize = () => {
       networkMaterialRef.current.uniforms.uResolution.value = new THREE.Vector2(
@@ -47,7 +43,9 @@ const NetworkShader = () => {
   }, []);
 
   useFrame((state) => {
-    networkMaterialRef.current.uniforms.uTime.value = state.clock.elapsedTime;
+    const { clock } = state;
+
+    networkMaterialRef.current.uniforms.uTime.value = clock.elapsedTime;
     screenMeshRef.current.material = networkMaterialRef.current;
   });
 
@@ -75,7 +73,7 @@ const NetworkShader = () => {
 
 function Scene() {
   return (
-    <Canvas style={{ width: "100vw", height: "100vh" }}>
+    <Canvas style={{ width: "100vw", height: "100vh", filter: "blur(0.8rem)" }}>
       <NetworkShader />
     </Canvas>
   );

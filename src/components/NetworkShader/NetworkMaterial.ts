@@ -39,7 +39,7 @@ const fragmentShader = `
   }
 
   vec2 randPosCell(vec2 gId, vec2 offset) {
-    vec2 r = randv2(gId + offset) * uTime;
+    vec2 r = randv2(gId + offset) * uTime * 0.6;
 
     return sin(r) * 0.4 + offset;
   }
@@ -60,19 +60,14 @@ const fragmentShader = `
     return m;
   }
 
-  void main() {
-    vec2 fragCoord = vUv * uResolution;
-    vec2 uv = (fragCoord - 0.5 * uResolution.xy) / uResolution.y;
-
-    uv *= 6.0;
-
+  float layer(vec2 uv) {
     vec2 gUv = fract(uv) - 0.5;
     vec2 gId = floor(uv);
 
     vec2 p[9];
     int i = 0;
-    for (float y = -1.; y <= 1.; y++) {
-      for (float x = -1.; x <= 1.; x++) {
+    for (int y = -1; y <= 1; y++) {
+      for (int x = -1; x <= 1; x++) {
         p[i++] = randPosCell(gId, vec2(x, y));
       }
     }
@@ -91,8 +86,22 @@ const fragmentShader = `
     m += line(gUv, p[3], p[7]);
     m += line(gUv, p[5], p[7]);
 
-    vec3 col = vec3(m);
+    return m;
+  }
 
+  void main() {
+    vec2 fragCoord = vUv * uResolution;
+    vec2 uv = (fragCoord - 0.5 * uResolution.xy) / uResolution.y;
+
+    float m = 0.0;
+    for (float i = 0.0; i < 1.0; i += 1.0 / 4.0) {
+      float z = fract(i + uTime * 0.04);
+      float size = mix(8.0, 0.4, z);
+      float fade = smoothstep(0.0, 0.8, z) * smoothstep(1.0, 0.7, z);
+      m += layer(uv * size + i * 20.0) * fade;
+    }
+
+    vec3 col = vec3(m);
     gl_FragColor = vec4(col, 1.0);
   }
 `;

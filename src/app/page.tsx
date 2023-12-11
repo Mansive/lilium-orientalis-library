@@ -4,6 +4,7 @@ import { useState } from "react";
 import NetworkShader from "@/components/NetworkShader";
 import SearchBar from "@/components/SearchBar";
 import SearchResultList from "@/components/SearchResultList";
+import Spinner from "@/components/Spinner";
 
 import { Book, BOOKS } from "@/data/book-data";
 
@@ -21,26 +22,23 @@ export default function Home() {
 
     setStatus("loading");
 
-    const nextSearchResults = BOOKS.filter(({ title }) =>
-      title.includes(searchTerm)
-    );
-    setSearchResults(nextSearchResults);
-
-    console.log(searchResults);
-
-    setStatus("success");
+    setTimeout(() => {
+      const nextSearchResults = BOOKS.filter(({ title }) =>
+        title.includes(searchTerm)
+      );
+      setSearchResults(nextSearchResults);
+      setStatus("success");
+    }, 2000);
   }
-
-  const showMain = false;
 
   return (
     <>
       <NetworkShader />
-      {showMain && (
-        <main className={styles.mainContent}>
-          <div className={styles.mainHeading}>
-            <h1>lolibrary</h1>
-          </div>
+      <main className={styles.wrapper}>
+        <div className={styles.heading}>
+          <h1>lolibrary</h1>
+        </div>
+        <div className={styles.searchBar}>
           <form onSubmit={handleSearch}>
             <SearchBar
               placeholder="Enter book title"
@@ -48,13 +46,17 @@ export default function Home() {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setSearchTerm(event.target.value);
               }}
+              maxLength={32}
             />
           </form>
-          {status === "success" && (
-            <SearchResultList searchResults={searchResults} />
-          )}
-        </main>
-      )}
+        </div>
+        <div className={styles.spinner}>
+          <Spinner color="white" size="100" isLoading={status === "loading"} />
+        </div>
+        {status === "success" && (
+          <SearchResultList searchResults={searchResults} />
+        )}
+      </main>
     </>
   );
 }

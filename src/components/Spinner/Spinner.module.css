@@ -1,0 +1,21 @@
+@keyframes spin {
+  from {
+    transform: rotate(-360deg);
+  }
+}
+
+.wrapper {
+  display: block;
+  width: min-content;
+  height: min-content;
+  opacity: 1.0;
+}
+
+.wrapper svg {
+  display: block;
+  max-width: revert;
+}
+
+.loading {
+  animation: spin 1500ms linear infinite;
+}
