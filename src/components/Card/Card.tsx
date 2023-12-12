@@ -1,7 +1,4 @@
-'use client'
-
-import React from "react";
-import Image from "next/image";
+"use client";
 
 import styles from "./Card.module.css";
 

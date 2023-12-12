@@ -12,10 +12,6 @@ interface SearchResultListInterface {
 }
 
 function SearchResultList({ searchResults }: SearchResultListInterface) {
-  if (searchResults?.length === 0) {
-    return;
-  }
-
   const listRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
