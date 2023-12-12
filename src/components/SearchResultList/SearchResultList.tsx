@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useEffect, useRef } from "react";
 
 import Card from "@/components/Card";
 
@@ -13,11 +13,30 @@ interface SearchResultListInterface {
 
 function SearchResultList({ searchResults }: SearchResultListInterface) {
   if (searchResults?.length === 0) {
-    return <p>No results</p>;
+    return;
   }
 
+  const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScrolling = (event: WheelEvent) => {
+      if (listRef.current) {
+        listRef.current.scrollTo({
+          top: listRef.current.scrollTop + event.deltaY * 1.2,
+          behavior: "smooth",
+        });
+      }
+    };
+
+    window.addEventListener("wheel", handleScrolling);
+
+    return () => {
+      window.removeEventListener("wheel", handleScrolling);
+    };
+  }, []);
+
   return (
-    <div className={styles.searchResultList}>
+    <div ref={listRef} className={styles.searchResultList}>
       {searchResults?.map((book) => (
         <Card
           key={book.id}

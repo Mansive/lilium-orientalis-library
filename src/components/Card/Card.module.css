@@ -4,10 +4,10 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  height: 5rem;
-  max-height: 5rem;
+  height: 6rem;
   margin: 0 auto;
-  padding: 0.5rem;
+  padding: 1rem;
+  border-top: 0.14rem solid white;
 }
 
 .cover {
@@ -19,27 +19,37 @@
   height: 64px;
 }
 
-.infoWrapper {
+.bookInfo {
   display: flex;
   flex-direction: column;
   margin-left: 1rem;
+  row-gap: 0.6rem;
 }
 
-.name {
-  color: #c7d5e0;
-}
-
-.type {
-  color: #62696e;
+.title {
+  font-size: 1.2em;
+  color: #ffffff;
 }
 
 .source {
-  font-size: 0.6em;
-  margin-top: 0.5rem;
-  color: #4c6c8c;
+  font-size: 1em;
+  color: #ffffff;
+}
+
+.fileInfo {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  text-align: right;
 }
 
 .size {
-  color: #66c0f4;
-  margin-left: auto;
+  color: #ffffff;
+  font-size: 1em;
+ 
+}
+
+.extension {
+  color: #ffffff;
+  font-size: 0.9em;
 }

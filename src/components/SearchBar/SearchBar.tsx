@@ -1,20 +1,21 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 import styles from "./SearchBar.module.css";
 
 interface LineInterface {
   progress: number;
-  maxLength: number;
+  lineLength: number;
+  strokeWidth: number;
 }
 
-const Line = ({ progress, maxLength }: LineInterface) => {
+const Line = ({ progress, lineLength, strokeWidth }: LineInterface) => {
   return (
     <div className={styles.line}>
       <motion.svg
         style={{ width: "100%", height: "100%" }}
-        viewBox={`0 0 ${maxLength} 32`}
+        viewBox={`0 0 ${lineLength} 128`}
       >
         <motion.path
           initial={{ pathLength: 0 }}
@@ -25,8 +26,8 @@ const Line = ({ progress, maxLength }: LineInterface) => {
           }}
           fill="none"
           stroke="white"
-          strokeWidth={5}
-          d={`M ${maxLength / 2}, 0 L 0, 0`}
+          strokeWidth={strokeWidth}
+          d={`M ${lineLength / 2}, 0 L 0, 0`}
         />
         <motion.path
           initial={{ pathLength: 0 }}
@@ -37,8 +38,8 @@ const Line = ({ progress, maxLength }: LineInterface) => {
           }}
           fill="none"
           stroke="white"
-          strokeWidth={5}
-          d={`M ${maxLength / 2}, 0 L ${maxLength}, 0`}
+          strokeWidth={strokeWidth}
+          d={`M ${lineLength / 2}, 0 L ${lineLength}, 0`}
         />
       </motion.svg>
     </div>
@@ -46,14 +47,22 @@ const Line = ({ progress, maxLength }: LineInterface) => {
 };
 
 function SearchBar({ ...delegated }) {
+  const [focused, setFocused] = useState(false);
   const { placeholder, value, maxLength } = delegated;
-  const progress = (value.length === 0 ? placeholder.length : value.length) / maxLength;
+  const progress =
+    focused || value.length > 0
+      ? value.length / maxLength + 0.01
+      : placeholder.length / maxLength;
 
   return (
     <div className={styles.searchBar}>
-      <Line progress={progress} maxLength={600} />
-      <input {...delegated} />
-      <Line progress={progress} maxLength={600} />
+      <Line progress={progress} lineLength={8192} strokeWidth={14} />
+      <input
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        {...delegated}
+      />
+      <Line progress={progress} lineLength={8192} strokeWidth={14} />
     </div>
   );
 }

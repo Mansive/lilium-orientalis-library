@@ -17,7 +17,7 @@ export default function Home() {
   // idle | loading | success | error
   const [status, setStatus] = useState("idle");
 
-  async function handleSearch(event: React.FormEvent<HTMLFormElement>) {
+  const handleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     setStatus("loading");
@@ -28,8 +28,8 @@ export default function Home() {
       );
       setSearchResults(nextSearchResults);
       setStatus("success");
-    }, 2000);
-  }
+    }, 1500);
+  };
 
   return (
     <>
@@ -46,15 +46,23 @@ export default function Home() {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setSearchTerm(event.target.value);
               }}
-              maxLength={32}
+              maxLength={64}
             />
           </form>
         </div>
-        <div className={styles.spinner}>
-          <Spinner color="white" size="100" isLoading={status === "loading"} />
-        </div>
+        {(status === "idle" || status === "loading") && (
+          <div className={styles.spinner}>
+            <Spinner
+              color="white"
+              size="100"
+              isLoading={status === "loading"}
+            />
+          </div>
+        )}
         {status === "success" && (
-          <SearchResultList searchResults={searchResults} />
+          <div className={styles.searchResultsList}>
+            <SearchResultList searchResults={searchResults} />
+          </div>
         )}
       </main>
     </>

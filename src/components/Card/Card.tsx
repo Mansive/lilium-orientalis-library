@@ -16,20 +16,14 @@ type CardInterface = {
 function Card({ id, title, sources, size, extension }: CardInterface) {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.cover}>
-        <Image src="/tevi.png" alt="TEVI" fill />
+      <div className={styles.bookInfo}>
+        <span className={styles.title}>{title}</span>
+        <span className={styles.source}>{sources.join(" | ")}</span>
       </div>
 
-      <div className={styles.infoWrapper}>
-        <span className={styles.name}>{title}</span>
-        <div>
-          <span className={styles.type}>{extension}</span>
-        </div>
-        <span className={styles.source}>{sources}</span>
-      </div>
-
-      <div className={styles.size}>
-        <span>{size} MB</span>
+      <div className={styles.fileInfo}>
+        <span className={styles.size}>{size} MB</span>
+        <span className={styles.extension}>{extension}</span>
       </div>
     </div>
   );

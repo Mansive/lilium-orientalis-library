@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { OrthographicCamera } from "@react-three/drei";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
@@ -74,7 +74,9 @@ const NetworkShader = () => {
 function Scene() {
   return (
     <Canvas style={{ width: "100vw", height: "100vh", filter: "blur(0.8rem)" }}>
-      <NetworkShader />
+      <Suspense>
+        <NetworkShader />
+      </Suspense>
     </Canvas>
   );
 }

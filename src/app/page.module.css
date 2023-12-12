@@ -19,7 +19,8 @@
 }
 
 .searchBar {
-  margin-top: 4rem;
+  margin-top: 1rem;
+  width: 50%;
 }
 
 .spinner {
@@ -27,4 +28,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.searchResultsList {
+  margin-top: 2rem;
+  width: 50%;
+  height: 50%;
 }
