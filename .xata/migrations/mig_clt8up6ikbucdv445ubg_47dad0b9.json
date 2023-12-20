@@ -1,0 +1,13 @@
+{
+  "id": "mig_clt8up6ikbucdv445ubg",
+  "parentID": "mig_clt8ul6ikbucdv445uag",
+  "checksum": "1:47dad0b9d387315cddc4f9a1b25dddb53f93ed48790efd2e186803c72ac7dcc8",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "sources",
+        "table": "Books"
+      }
+    }
+  ]
+}

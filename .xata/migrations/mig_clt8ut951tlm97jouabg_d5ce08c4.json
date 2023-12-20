@@ -1,0 +1,16 @@
+{
+  "id": "mig_clt8ut951tlm97jouabg",
+  "parentID": "mig_clt8up6ikbucdv445ubg",
+  "checksum": "1:d5ce08c408263f80863055712da3e1bf066731e115fba5e10f2e40ee7d41007e",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "sources",
+          "type": "multiple"
+        },
+        "table": "Books"
+      }
+    }
+  ]
+}

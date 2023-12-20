@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://lolibrary-92ghbn.us-east-1.xata.sh/db/lolibrary",
+  "codegen": {
+    "output": "src/lib/xata.ts"
+  }
+}

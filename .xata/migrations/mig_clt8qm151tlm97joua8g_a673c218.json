@@ -1,0 +1,18 @@
+{
+  "id": "mig_clt8qm151tlm97joua8g",
+  "parentID": "mig_clt8qg951tlm97joua7g",
+  "checksum": "1:a673c218ed69470cd5ae2d9d824433ad1ff1c0e4ba17f6dc4f78c85b303f2f9b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string",
+          "notNull": true,
+          "defaultValue": "\"\""
+        },
+        "table": "Books"
+      }
+    }
+  ]
+}

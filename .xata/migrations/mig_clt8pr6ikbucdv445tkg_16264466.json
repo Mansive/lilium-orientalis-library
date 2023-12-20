@@ -1,0 +1,11 @@
+{
+  "id": "mig_clt8pr6ikbucdv445tkg",
+  "checksum": "1:16264466529c465708d58829438f3ea695865e100ec7d4f1a20e4ee89e81f4bb",
+  "operations": [
+    {
+      "addTable": {
+        "table": "Books"
+      }
+    }
+  ]
+}
