@@ -6,7 +6,7 @@ import SearchBar from "@/components/SearchBar";
 import SearchResultList from "@/components/SearchResultList";
 import Spinner from "@/components/Spinner";
 
-import { Book, BOOKS } from "@/data/book-data";
+import { Book } from "@/data/book-data";
 
 import styles from "./page.module.css";
 
@@ -22,11 +22,13 @@ export default function Home() {
 
     setStatus("loading");
 
-    setTimeout(() => {
-      const nextSearchResults = BOOKS.filter(({ title }) =>
-        title.includes(searchTerm)
-      );
-      setSearchResults(nextSearchResults);
+    setTimeout(async () => {
+      // const nextSearchResults = BOOKS.filter(({ title }) =>
+      //   title.includes(searchTerm)
+      // );
+      const response = await fetch("/api/search?query=" + searchTerm);
+      const data = await response.json();
+      setSearchResults(data["records"]);
       setStatus("success");
     }, 1500);
   };

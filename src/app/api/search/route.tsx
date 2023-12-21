@@ -15,5 +15,5 @@ export async function GET(request: NextRequest) {
     fuzziness: 0,
   });
 
-  return NextResponse.json({ results });
+  return NextResponse.json(results);
 }

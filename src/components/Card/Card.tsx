@@ -6,7 +6,7 @@ type CardInterface = {
   id: string;
   title: string;
   sources: string[];
-  size: number;
+  size: string;
   extension: string;
 };
 
