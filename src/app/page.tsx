@@ -29,10 +29,8 @@ export default function Home() {
       }
       const data = await response.json();
       setSearchResults(data["records"]);
-      setStatus("success");
-      console.log("success");
+      data["records"].length == 0 ? setStatus("idle") : setStatus("success");
     } catch (error) {
-      console.log("wtf");
       setStatus("idle");
       //setStatus("error");
     }
