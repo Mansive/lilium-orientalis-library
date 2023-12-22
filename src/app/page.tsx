@@ -22,15 +22,20 @@ export default function Home() {
 
     setStatus("loading");
 
-    setTimeout(async () => {
-      // const nextSearchResults = BOOKS.filter(({ title }) =>
-      //   title.includes(searchTerm)
-      // );
+    try {
       const response = await fetch("/api/search?query=" + searchTerm);
+      if (!response.ok) {
+        throw new Error();
+      }
       const data = await response.json();
       setSearchResults(data["records"]);
       setStatus("success");
-    }, 1500);
+      console.log("success");
+    } catch (error) {
+      console.log("wtf");
+      setStatus("idle");
+      //setStatus("error");
+    }
   };
 
   return (

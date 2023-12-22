@@ -9,6 +9,12 @@ export async function GET(request: NextRequest) {
   const searchParams: string = decodeURIComponent(
     request.nextUrl.searchParams.toString()
   );
+  if (searchParams.length > 128) {
+    return NextResponse.json(
+      { message: "Search entry is too long" },
+      { status: 403 }
+    );
+  }
 
   const results = await xata.db.Books.search(searchParams, {
     target: ["title"],
