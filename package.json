@@ -12,6 +12,7 @@
     "@react-three/drei": "^9.90.0",
     "@react-three/fiber": "^8.15.12",
     "@types/three": "^0.159.0",
+    "@xata.io/client": "^0.28.2",
     "framer-motion": "^10.16.14",
     "next": "14.0.3",
     "react": "^18",

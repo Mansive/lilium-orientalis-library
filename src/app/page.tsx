@@ -6,7 +6,7 @@ import SearchBar from "@/components/SearchBar";
 import SearchResultList from "@/components/SearchResultList";
 import Spinner from "@/components/Spinner";
 
-import { Book, BOOKS } from "@/data/book-data";
+import { Book } from "@/data/book-data";
 
 import styles from "./page.module.css";
 
@@ -22,13 +22,18 @@ export default function Home() {
 
     setStatus("loading");
 
-    setTimeout(() => {
-      const nextSearchResults = BOOKS.filter(({ title }) =>
-        title.includes(searchTerm)
-      );
-      setSearchResults(nextSearchResults);
-      setStatus("success");
-    }, 1500);
+    try {
+      const response = await fetch("/api/search?query=" + searchTerm);
+      if (!response.ok) {
+        throw new Error();
+      }
+      const data = await response.json();
+      setSearchResults(data["records"]);
+      data["records"].length == 0 ? setStatus("idle") : setStatus("success");
+    } catch (error) {
+      setStatus("idle");
+      //setStatus("error");
+    }
   };
 
   return (
@@ -46,7 +51,7 @@ export default function Home() {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setSearchTerm(event.target.value);
               }}
-              maxLength={64}
+              maxLength={128}
             />
           </form>
         </div>

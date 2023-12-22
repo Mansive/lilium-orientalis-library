@@ -1,0 +1,16 @@
+{
+  "id": "mig_clt8v0mikbucdv445ucg",
+  "parentID": "mig_clt8ut951tlm97jouabg",
+  "checksum": "1:25569b27226827636af25095c26d23e44d59e489c57aba56575b975a0a0ce596",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "md5",
+          "type": "string"
+        },
+        "table": "Books"
+      }
+    }
+  ]
+}

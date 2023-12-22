@@ -31,6 +31,13 @@ function SearchResultList({ searchResults }: SearchResultListInterface) {
     };
   }, []);
 
+  // https://stackoverflow.com/a/48764436
+  function round(num: number, decimalPlaces = 0) {
+    var p = Math.pow(10, decimalPlaces);
+    var n = num * p * (1 + Number.EPSILON);
+    return Math.round(n) / p;
+  }
+
   return (
     <div ref={listRef} className={styles.searchResultList}>
       {searchResults?.map((book) => (
@@ -39,7 +46,7 @@ function SearchResultList({ searchResults }: SearchResultListInterface) {
           id={book.id}
           title={book.title}
           sources={book.sources}
-          size={book.size}
+          size={round(book.size / 1048576, 2).toFixed(1)} // to mebibytes
           extension={book.extension}
         />
       ))}

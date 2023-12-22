@@ -1,0 +1,12 @@
+{
+  "id": "mig_clt8qep51tlm97joua5g",
+  "parentID": "mig_clt8pvh51tlm97jou9tg",
+  "checksum": "1:39219fe868101ac292a454d1c1713e8b8370a1b4822427ce40a5842d3fbc58d2",
+  "operations": [
+    {
+      "removeTable": {
+        "table": "Books"
+      }
+    }
+  ]
+}
