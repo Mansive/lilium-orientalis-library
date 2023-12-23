@@ -32,7 +32,9 @@
 
 .searchResultsList {
   margin-top: 2rem;
+  margin-bottom: 2rem;
   width: 100%;
   max-width: 50rem;
-  height: 50%;
+  min-height: 0%;
+  max-height: 100%;
 }
