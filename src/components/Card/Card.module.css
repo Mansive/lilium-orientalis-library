@@ -4,10 +4,11 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  height: 6rem;
+  height: fit-content;
   margin: 0 auto;
   padding: 1rem;
   border-top: 0.14rem solid white;
+  gap: 1rem;
 }
 
 .cover {
@@ -41,12 +42,13 @@
   flex-direction: column;
   color: #ffffff;
   text-align: right;
+  flex-shrink: 0;
 }
 
 .size {
   color: #ffffff;
   font-size: 1em;
- 
+
 }
 
 .extension {
