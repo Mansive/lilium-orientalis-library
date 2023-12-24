@@ -4,14 +4,25 @@
   margin: 0;
 }
 
+
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
   overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: "Noto Sans JP";
+  src: url(../../public/NotoSansJP-Regular.ttf);
 }
 
 body {
   background: #1b2838;
-  font-family: sans-serif;
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Sans", "Noto Sans JP",
+    "Hiragino Kaku Gothic Pro","メイリオ", "Meiryo","ＭＳ Ｐゴシック",sans-serif;
+  text-shadow:
+    0 0 0.15em black,
+    0 0 0.3em rgba(255, 255, 255, 0.6);
 }

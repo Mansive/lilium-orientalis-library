@@ -2,11 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   position: absolute;
   top: 0;
   margin: 0 auto;
-
   width: 100%;
   height: 100%;
 }
@@ -15,7 +13,7 @@
   margin-top: 2rem;
   text-align: center;
   color: #ffffff;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .searchBar {
@@ -32,9 +30,20 @@
 
 .searchResultsList {
   margin-top: 2rem;
-  margin-bottom: 2rem;
   width: 100%;
   max-width: 50rem;
   min-height: 0%;
-  max-height: 100%;
+  max-height: 100vh;
+
+  overflow: scroll;
+
+  /* hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  -o-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* hide scrollbar for chrome, safari and opera */
+.searchResultsList::-webkit-scrollbar {
+  display: none;
 }

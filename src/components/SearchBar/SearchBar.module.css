@@ -10,7 +10,8 @@
   background: transparent;
   border: none;
   color: #ffffff;
-  font-family: sans-serif;
+  font-family: inherit;
+  text-shadow: inherit;
   font-size: 18px;
   text-align: center;
   line-height: 1em;
@@ -21,11 +22,12 @@
 }
 
 .searchBar input::placeholder {
-  color: #ffffff;
+  color: inherit;
 }
 
 .searchBar input:focus::placeholder {
   color: transparent;
+  text-shadow: none;
 }
 
 .line {

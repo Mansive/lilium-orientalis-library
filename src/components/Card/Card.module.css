@@ -1,13 +1,11 @@
 .wrapper {
-  background: rgba( 0, 0, 0, 0.2 );
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
   height: fit-content;
-  margin: 0 auto;
   padding: 1rem;
-  border-top: 0.14rem solid white;
+  border-top: 0.14rem solid rgba(195, 195, 195, 1);
   gap: 1rem;
 }
 
