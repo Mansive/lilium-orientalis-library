@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import { Noto_Sans_JP } from "next/font/google";
+
+const font = Noto_Sans_JP({ weight: "400" });
+
 export const metadata: Metadata = {
   title: "lolibrary",
   description: "Search for Japanese literature.",
@@ -13,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body className={font.className}>{children}</body>
     </html>
   );
 }

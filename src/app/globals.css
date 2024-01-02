@@ -13,16 +13,10 @@ body {
   scroll-behavior: smooth;
 }
 
-@font-face {
-  font-family: "Noto Sans JP";
-  src: url(../../public/NotoSansJP-Regular.ttf);
-}
-
 body {
   background: #1b2838;
-  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Sans", "Noto Sans JP",
-    "Hiragino Kaku Gothic Pro","メイリオ", "Meiryo","ＭＳ Ｐゴシック",sans-serif;
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Sans", "Hiragino Kaku Gothic Pro",
+  "メイリオ", "Meiryo","ＭＳ Ｐゴシック", sans-serif;
   text-shadow:
-    0 0 0.15em black,
-    0 0 0.3em rgba(255, 255, 255, 0.6);
+    0 0 0.15em black
 }
