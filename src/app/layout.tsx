@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { Noto_Sans_JP } from "next/font/google";
+import localFont from "next/font/local";
 
-const font = Noto_Sans_JP({ subsets: ["latin"], weight: "400" });
+const font = localFont({ src: "../../fonts/NotoSansJP-Regular.woff2" });
 
 export const metadata: Metadata = {
   title: "lolibrary",
