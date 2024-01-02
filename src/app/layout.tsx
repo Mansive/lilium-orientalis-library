@@ -3,7 +3,7 @@ import "./globals.css";
 
 import { Noto_Sans_JP } from "next/font/google";
 
-const font = Noto_Sans_JP({ weight: "400" });
+const font = Noto_Sans_JP({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "lolibrary",
