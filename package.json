@@ -6,7 +6,8 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@react-three/drei": "^9.90.0",
