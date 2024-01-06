@@ -19,6 +19,7 @@ export async function GET(request: NextRequest) {
   const results = await xata.db.Books.search(searchParams, {
     target: ["title"],
     fuzziness: 0,
+    page: { size: 50, offset: 0 },
   });
 
   return NextResponse.json(results);
