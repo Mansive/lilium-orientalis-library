@@ -16,6 +16,7 @@ const tables = [
       { name: "size", type: "int", notNull: true, defaultValue: "0" },
       { name: "sources", type: "multiple" },
       { name: "md5", type: "string" },
+      { name: "embeddings", type: "vector", vector: { dimension: 1024 } },
     ],
   },
 ] as const;
