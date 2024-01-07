@@ -19,8 +19,9 @@ export async function GET(request: NextRequest) {
   try {
     const results = await xata.db.Books.search(searchParams, {
       target: ["title"],
+      prefix: "phrase",
       fuzziness: 0,
-      page: { size: 50, offset: 0 },
+      page: { size: 35, offset: 0 },
     });
 
     // Pasted from Copilot; could probably be done better
