@@ -12,8 +12,7 @@ export async function search(query: string) {
 }
 
 export async function vectorSearch(query: string) {
-  // Is this how JavaScript experts write functions?
-  return await fetch("https://api.embaas.io/v1/embeddings/", {
+  const results = await fetch("https://api.embaas.io/v1/embeddings/", {
     method: "POST",
     body: JSON.stringify({
       texts: ["query: " + query],
@@ -23,16 +22,16 @@ export async function vectorSearch(query: string) {
       "Content-Type": "application/json",
       Authorization: "Bearer " + process.env.EMBAAS_API_KEY,
     },
-  })
-    .then((response) => response.json())
-    .then((embeddings) =>
-      xata.db.Books.vectorSearch(
-        "embeddings",
-        embeddings["data"][0]["embedding"],
-        {
-          similarityFunction: "cosineSimilarity",
-          size: 35,
-        }
-      )
-    );
+  });
+
+  const embeddings = await results.json();
+
+  return await xata.db.Books.vectorSearch(
+    "embeddings",
+    embeddings["data"][0]["embedding"],
+    {
+      similarityFunction: "cosineSimilarity",
+      size: 35,
+    }
+  );
 }
