@@ -1,4 +1,3 @@
-import React from "react";
 import { Hexagon } from "react-feather";
 
 import styles from "./Spinner.module.css";

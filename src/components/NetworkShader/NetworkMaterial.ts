@@ -1,5 +1,5 @@
-import { NoBlending, ShaderMaterial, Vector2 } from "three";
 import { ShaderMaterialProps } from "@react-three/fiber";
+import { NoBlending, ShaderMaterial, Vector2 } from "three";
 
 declare global {
   namespace JSX {
@@ -25,7 +25,7 @@ const vertexShader = `
 const fragmentShader = `
   uniform float uTime;
   uniform vec2 uResolution;
-  
+
   varying vec2 vUv;
 
   // sine randomness function from The Book Of Shaders
@@ -47,9 +47,9 @@ const fragmentShader = `
   float pointSegmentDistance(vec2 p, vec2 a, vec2 b) {
     vec2 ab = b - a;
     vec2 ap = p - a;
-    
+
     float d = clamp(dot(ap, ab) / dot(ab, ab), 0.0, 1.0);
-    
+
     return length(ap - ab * d);
   }
 
