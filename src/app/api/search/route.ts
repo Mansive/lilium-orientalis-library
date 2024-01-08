@@ -8,13 +8,8 @@ function customError(msg: string, code: number) {
 }
 
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  if (!searchParams.has("query") || !searchParams.has("mode")) {
-    return customError("Missing parameters", 400);
-  }
-
-  const query = searchParams.get("query");
-  const searchMode = searchParams.get("mode");
+  const query = request.nextUrl.searchParams.get("query");
+  const searchMode = request.nextUrl.searchParams.get("mode");
 
   if (query === null || searchMode === null) {
     return customError("Invalid parameters", 400);

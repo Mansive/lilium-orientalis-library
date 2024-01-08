@@ -26,17 +26,19 @@ export default function Home() {
 
     try {
       const params = new URLSearchParams(searchParams);
+      useVectorSearch === false
+        ? params.set("mode", "normal")
+        : params.set("mode", "vector");
       params.set("query", searchTerm);
-      if (useVectorSearch === true) {
-        params.set("mode", "vector");
-      } else {
-        params.set("mode", "normal");
-      }
 
-      const response = await fetch("/api/search?" + params);
+      const response = await fetch("/api/search?" + params, {
+        method: "GET",
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+      });
       if (!response.ok) {
         throw new Error();
       }
+
       const data = await response.json();
       setSearchResults(data["records"]);
       data["records"].length == 0 ? setStatus("idle") : setStatus("success");
