@@ -73,7 +73,14 @@ const NetworkShader = () => {
 
 function Scene() {
   return (
-    <Canvas style={{ width: "100vw", height: "100vh", filter: "blur(0.8rem)" }}>
+    <Canvas
+      style={{
+        width: "100vw",
+        height: "100vh",
+        filter: "blur(0.8rem)",
+        mixBlendMode: "hard-light",
+      }}
+    >
       <Suspense>
         <NetworkShader />
       </Suspense>
