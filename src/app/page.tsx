@@ -1,4 +1,5 @@
 "use client";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 import NetworkShader from "@/components/NetworkShader";
@@ -6,14 +7,15 @@ import SearchBar from "@/components/SearchBar";
 import SearchResultList from "@/components/SearchResultList";
 import Spinner from "@/components/Spinner";
 
-import { Book } from "@/data/book-data";
+import { SearchSwitch, useVectorSearch } from "@/components/SearchSwitch";
 
+import { Book } from "@/data/book-data";
 import styles from "./page.module.css";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<Book[] | null>(null);
-
+  const searchParams = useSearchParams();
   // idle | loading | success | error
   const [status, setStatus] = useState("idle");
 
@@ -23,7 +25,15 @@ export default function Home() {
     setStatus("loading");
 
     try {
-      const response = await fetch("/api/search?query=" + searchTerm);
+      const params = new URLSearchParams(searchParams);
+      params.set("query", searchTerm);
+      if (useVectorSearch === true) {
+        params.set("mode", "vector");
+      } else {
+        params.set("mode", "normal");
+      }
+
+      const response = await fetch("/api/search?" + params);
       if (!response.ok) {
         throw new Error();
       }
@@ -54,6 +64,9 @@ export default function Home() {
               maxLength={128}
             />
           </form>
+        </div>
+        <div className={styles.searchSwitch}>
+          <SearchSwitch />
         </div>
         {(status === "idle" || status === "loading") && (
           <div className={styles.spinner}>

@@ -1,0 +1,21 @@
+.searchSwitch {
+    font: inherit;
+    font-family: inherit;
+    color: white;
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgba(195, 195, 195, 0.5);
+    padding: 0.3rem;
+    border-radius: 0;
+    text-shadow: inherit;
+    transition: border-color 0.15s;
+}
+
+.searchSwitch:hover {
+    border-color: rgb(255, 255, 255);
+}
+
+.searchSwitch:active {
+    background-color: rgba(255, 255, 255, 0.5);
+}

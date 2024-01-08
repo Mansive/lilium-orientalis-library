@@ -5,7 +5,7 @@
   width: 100%;
   height: fit-content;
   padding: 1rem;
-  border-top: 0.14rem solid rgba(195, 195, 195, 1);
+  border-top: 0.14rem solid rgba(195, 195, 195);
   gap: 1rem;
 }
 
