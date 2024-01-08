@@ -1,7 +1,7 @@
 "use client";
-import { Suspense, useEffect, useRef } from "react";
 import { OrthographicCamera } from "@react-three/drei";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
+import { Suspense, useEffect, useRef } from "react";
 import * as THREE from "three";
 
 import NetworkMaterial from "./NetworkMaterial";
