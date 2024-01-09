@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
   } else if (query.length > 128) {
     return customError("Search query is too long", 400);
   } else if (query.length === 0) {
-    return NextResponse.json({});
+    return NextResponse.json({ records: [] });
   } else if (!["normal", "vector"].includes(searchMode)) {
     return customError("Invalid mode", 400);
   }

@@ -39,10 +39,11 @@ export default function Home() {
         throw new Error();
       }
       const data = await response.json();
-      Object.keys(data).length === 0 ? setStatus("idle") : setStatus("success");
+      data["records"].length === 0 ? setStatus("idle") : setStatus("success");
       setSearchResults(data["records"]);
     } catch (error) {
       setStatus("error");
+      console.log(error);
     }
   };
 
