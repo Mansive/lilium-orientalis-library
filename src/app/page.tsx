@@ -38,13 +38,11 @@ export default function Home() {
       if (!response.ok) {
         throw new Error();
       }
-
       const data = await response.json();
+      Object.keys(data).length === 0 ? setStatus("idle") : setStatus("success");
       setSearchResults(data["records"]);
-      data["records"].length == 0 ? setStatus("idle") : setStatus("success");
     } catch (error) {
-      setStatus("idle");
-      //setStatus("error");
+      setStatus("error");
     }
   };
 
@@ -77,6 +75,11 @@ export default function Home() {
               size="100"
               isLoading={status === "loading"}
             />
+          </div>
+        )}
+        {status === "error" && (
+          <div className={styles.spinner}>
+            <Spinner color="red" size="100" isLoading={false} />
           </div>
         )}
         {status === "success" && (

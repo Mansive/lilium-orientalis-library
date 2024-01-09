@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
   if (query === null || searchMode === null) {
     return customError("Invalid parameters", 400);
   } else if (query.length > 128) {
-    return customError("Search entry is too long", 400);
+    return customError("Search query is too long", 400);
   } else if (query.length === 0) {
     return NextResponse.json({});
   } else if (!["normal", "vector"].includes(searchMode)) {
