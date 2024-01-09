@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import styles from "./SearchBar.module.css";
 
@@ -54,14 +54,13 @@ const Line = ({ progress, lineLength, strokeWidth }: LineInterface) => {
 function SearchBar({ ...delegated }) {
   const [focused, setFocused] = useState(false);
   const { placeholder, value, maxLength } = delegated;
-  const jpChar = useRef([...value.matchAll(re)]);
-  jpChar.current = [...value.matchAll(re)];
+  const jpCharTotal = [...value.matchAll(re)].length;
 
   // value.length - jpChar.current.length + jpChar.current.length * 2.15
   // x-y+(y*2.15) = x+(y*1.15)
   const progress =
     focused || value.length > 0
-      ? (value.length + jpChar.current.length * 1.15) / maxLength + 0.01
+      ? (value.length + jpCharTotal * 1.15) / maxLength + 0.01
       : placeholder.length / maxLength;
 
   return (
