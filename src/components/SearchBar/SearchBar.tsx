@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import styles from "./SearchBar.module.css";
 
@@ -10,18 +10,23 @@ interface LineInterface {
   strokeWidth: number;
 }
 
+// http://www.rikai.com/library/kanjitables/kanji_codes.unicode.shtml
+const re =
+  /[\p{Script=Han}\p{Script=Katakana}\p{Script=Hiragana}！-～\u3000-\u303f]/gu;
+
 const Line = ({ progress, lineLength, strokeWidth }: LineInterface) => {
+  const duration = 0.8;
   return (
     <div className={styles.line}>
       <motion.svg
-        style={{ width: "100%", height: "100%" }}
-        viewBox={`0 0 ${lineLength} 128`}
+        style={{ width: "100%", height: "100%", y: -5 }}
+        viewBox={`0 0 ${lineLength} 1`}
       >
         <motion.path
           initial={{ pathLength: 0 }}
           animate={{ pathLength: progress }}
           transition={{
-            duration: 1,
+            duration: duration,
             ease: "easeInOut",
           }}
           fill="none"
@@ -33,7 +38,7 @@ const Line = ({ progress, lineLength, strokeWidth }: LineInterface) => {
           initial={{ pathLength: 0 }}
           animate={{ pathLength: progress }}
           transition={{
-            duration: 1,
+            duration: duration,
             ease: "easeInOut",
           }}
           fill="none"
@@ -49,9 +54,14 @@ const Line = ({ progress, lineLength, strokeWidth }: LineInterface) => {
 function SearchBar({ ...delegated }) {
   const [focused, setFocused] = useState(false);
   const { placeholder, value, maxLength } = delegated;
+  const jpChar = useRef([...value.matchAll(re)]);
+  jpChar.current = [...value.matchAll(re)];
+
+  // value.length - jpChar.current.length + jpChar.current.length * 2.15
+  // x-y+(y*2.15) = x+(y*1.15)
   const progress =
     focused || value.length > 0
-      ? value.length / maxLength + 0.01
+      ? (value.length + jpChar.current.length * 1.15) / maxLength + 0.01
       : placeholder.length / maxLength;
 
   return (
