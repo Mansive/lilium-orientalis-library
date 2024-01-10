@@ -6,7 +6,7 @@
 }
 
 .searchBar input {
-  width: 100%;
+  width: 50rem;
   background: transparent;
   border: none;
   color: #ffffff;
@@ -32,7 +32,7 @@
 }
 
 .line {
-  width: 66rem;
+  width: 50rem;
   height: 1rem;
   margin-top: 0.5rem;
 }

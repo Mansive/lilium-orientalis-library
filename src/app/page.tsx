@@ -62,7 +62,7 @@ export default function Home() {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setSearchTerm(event.target.value);
               }}
-              maxLength={128}
+              maxLength={80}
             />
           </form>
         </div>
