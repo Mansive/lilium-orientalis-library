@@ -7,49 +7,50 @@
   padding: 1rem;
   border-top: 0.14rem solid rgba(195, 195, 195);
   gap: 1rem;
+  color: white;
 }
 
 .cover {
-  flex-shrink: 0;
-  position: relative;
-  object-fit: cover;
+  object-fit: contain;
   overflow: hidden;
-  width: 128px;
-  height: 64px;
+  padding: 0;
+  min-width: 72px;
+  max-width: 72px;
 }
 
 .bookInfo {
   display: flex;
   flex-direction: column;
-  margin-left: 1rem;
+  margin-right: auto;
   row-gap: 0.6rem;
 }
 
 .title {
   font-size: 1.2em;
-  color: #ffffff;
+}
+
+.true_title {
+  font-size: 1em;
+  color:rgb(181, 181, 181);
+  margin-top: -0.6rem;
 }
 
 .source {
   font-size: 1em;
-  color: #ffffff;
+  margin-top: auto;
 }
 
 .fileInfo {
   display: flex;
   flex-direction: column;
-  color: #ffffff;
   text-align: right;
   flex-shrink: 0;
 }
 
 .size {
-  color: #ffffff;
   font-size: 1em;
-
 }
 
 .extension {
-  color: #ffffff;
   font-size: 0.9em;
 }
