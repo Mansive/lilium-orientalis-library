@@ -10,7 +10,7 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
-    "@react-three/drei": "^9.96.1",
+    "@react-three/drei": "^9.96.4",
     "@react-three/fiber": "^8.15.15",
     "@types/three": "^0.159.0",
     "@xata.io/client": "^0.28.3",
