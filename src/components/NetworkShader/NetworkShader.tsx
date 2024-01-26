@@ -1,6 +1,6 @@
 "use client";
-import { OrthographicCamera } from "@react-three/drei";
-import { Canvas, extend, useFrame } from "@react-three/fiber";
+import { OrthographicCamera, useFBO } from "@react-three/drei";
+import { Canvas, createPortal, extend, useFrame } from "@react-three/fiber";
 import { Suspense, useEffect, useRef } from "react";
 import * as THREE from "three";
 
@@ -24,9 +24,23 @@ const getFullScreenTriangle = () => {
 };
 
 const NetworkShader = () => {
+  // Improve performance by reducing width and height
+  const width = window.innerWidth / 2;
+  const height = window.innerHeight / 2;
+
+  const cameraRef = useRef<THREE.OrthographicCamera>(null!);
   const screenMeshRef = useRef<THREE.Mesh>(null!);
   const networkMaterialRef = useRef<NetworkMaterial>(null!);
-
+  
+  const scene = new THREE.Scene();
+  const renderTarget = useFBO(width, height, {
+    minFilter: THREE.NearestFilter,
+    magFilter: THREE.NearestFilter,
+    format: THREE.RGBAFormat,
+    stencilBuffer: false,
+    type: THREE.FloatType,
+  });
+  
   useEffect(() => {
     const onWindowResize = () => {
       networkMaterialRef.current.uniforms.uResolution.value = new THREE.Vector2(
@@ -43,15 +57,32 @@ const NetworkShader = () => {
   }, []);
 
   useFrame((state) => {
-    const { clock } = state;
+    const { gl, clock } = state;
+
+    gl.setRenderTarget(renderTarget);
+    gl.clear();
 
     networkMaterialRef.current.uniforms.uTime.value = clock.elapsedTime;
-    screenMeshRef.current.material = networkMaterialRef.current;
+
+    gl.render(scene, cameraRef.current);
+
+    (screenMeshRef.current.material as THREE.MeshBasicMaterial).map = renderTarget.texture;
+
+    gl.setRenderTarget(null);
   });
 
   return (
     <>
+    {createPortal(
+      <mesh
+        geometry={getFullScreenTriangle()}
+      >
+        <networkMaterial ref={networkMaterialRef} />
+      </mesh>,
+      scene
+    )}
       <OrthographicCamera
+        ref={cameraRef}
         makeDefault
         manual={true}
         left={-1}
@@ -61,11 +92,9 @@ const NetworkShader = () => {
         near={0}
         far={1}
       />
-      <networkMaterial ref={networkMaterialRef} />
       <mesh
         ref={screenMeshRef}
         geometry={getFullScreenTriangle()}
-        frustumCulled={false}
       />
     </>
   );
