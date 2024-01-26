@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@react-three/drei':
-    specifier: ^9.96.4
-    version: 9.96.4(@react-three/fiber@8.15.15)(@types/react@18.2.48)(@types/three@0.159.0)(react-dom@18.2.0)(react@18.2.0)(three@0.159.0)
+    specifier: ^9.96.5
+    version: 9.96.5(@react-three/fiber@8.15.15)(@types/react@18.2.48)(@types/three@0.159.0)(react-dom@18.2.0)(react@18.2.0)(three@0.159.0)
   '@react-three/fiber':
     specifier: ^8.15.15
     version: 8.15.15(react-dom@18.2.0)(react@18.2.0)(three@0.159.0)
@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@types/node':
-    specifier: ^20.11.6
-    version: 20.11.6
+    specifier: ^20.11.7
+    version: 20.11.7
   '@types/react':
     specifier: ^18.2.48
     version: 18.2.48
@@ -312,8 +312,8 @@ packages:
     resolution: {integrity: sha512-POu8Mk0hIU3lRXB3bGIGe4VHIwwDsQyoD1F394OK7STTiX9w4dG3cTLljjYswkQN+hDSHRrj4O36kuVa7KPU8Q==}
     dev: false
 
-  /@react-three/drei@9.96.4(@react-three/fiber@8.15.15)(@types/react@18.2.48)(@types/three@0.159.0)(react-dom@18.2.0)(react@18.2.0)(three@0.159.0):
-    resolution: {integrity: sha512-Zmy5felOamD7DkD5EeLfijNkohDxHNtXomGAf3C/0G6ml/ocf1+VrJ6mLDQRE+DhRnF1RDHV+WC6nuvpPPkx1w==}
+  /@react-three/drei@9.96.5(@react-three/fiber@8.15.15)(@types/react@18.2.48)(@types/three@0.159.0)(react-dom@18.2.0)(react@18.2.0)(three@0.159.0):
+    resolution: {integrity: sha512-mEf8y8S0FCdCryfbKJ1vghYzMgI+7bgssEeerBBwCk4pi7h8OeavWISXb7QzY9dQLbPm5lL/X0PC7qLE6VUKww==}
     peerDependencies:
       '@react-three/fiber': '>=8.0'
       react: '>=18.0'
@@ -382,7 +382,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.9
       '@types/react-reconciler': 0.26.7
-      '@types/webxr': 0.5.10
+      '@types/webxr': 0.5.11
       base64-js: 1.5.1
       buffer: 6.0.3
       its-fine: 1.1.1(react@18.2.0)
@@ -396,8 +396,8 @@ packages:
       zustand: 3.7.2(react@18.2.0)
     dev: false
 
-  /@rushstack/eslint-patch@1.7.1:
-    resolution: {integrity: sha512-irBNt5094vHloql4QzY8RdeI8Tns2kGsaiJ/m6jENWx9xCz/m/F4gKQ1dAailFmpL0Id9tgWLqZbTUO4SINM/Q==}
+  /@rushstack/eslint-patch@1.7.2:
+    resolution: {integrity: sha512-RbhOOTCNoCrbfkRyoXODZp75MlpiHMgbE5MEBZAnnnLyQNgrigEj4p0lzsMDyc1zVsJDLrivB58tgg3emX0eEA==}
     dev: true
 
   /@swc/helpers@0.5.2:
@@ -414,8 +414,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/node@20.11.6:
-    resolution: {integrity: sha512-+EOokTnksGVgip2PbYbr3xnR7kZigh4LbybAfBAw5BpnQ+FqBYUsvCEjYd70IXKlbohQ64mzEYmMtlWUY8q//Q==}
+  /@types/node@20.11.7:
+    resolution: {integrity: sha512-GPmeN1C3XAyV5uybAf4cMLWT9fDWcmQhZVtMFu7OR32WjrqGG+Wnk2V1d0bmtUyE/Zy1QJ9BxyiTih9z8Oks8A==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -463,13 +463,13 @@ packages:
     resolution: {integrity: sha512-2gybdh7HtX+rGUgslzK7QEJfzD2I0qrbUGzKk+dK0FDx49UHkNX0rqZVRzIgeFjBd1HzzhNNgwNoMacm3Wyc7w==}
     dependencies:
       '@types/stats.js': 0.17.3
-      '@types/webxr': 0.5.10
+      '@types/webxr': 0.5.11
       fflate: 0.6.10
       meshoptimizer: 0.18.1
     dev: false
 
-  /@types/webxr@0.5.10:
-    resolution: {integrity: sha512-n3u5sqXQJhf1CS68mw3Wf16FQ4cRPNBBwdYLFzq3UddiADOim1Pn3Y6PBdDilz1vOJF3ybLxJ8ZEDlLIzrOQZg==}
+  /@types/webxr@0.5.11:
+    resolution: {integrity: sha512-bo3K4UFBwP1RbMjuMin9cgyThD5YxjIWjQHJT7O7PVU2DB81qop7JnZAXRmrrGPbEsoHcdUmjmQDXI6zfqkVIQ==}
     dev: false
 
   /@typescript-eslint/parser@6.19.1(eslint@8.56.0)(typescript@5.3.3):
@@ -1032,7 +1032,7 @@ packages:
         optional: true
     dependencies:
       '@next/eslint-plugin-next': 14.0.3
-      '@rushstack/eslint-patch': 1.7.1
+      '@rushstack/eslint-patch': 1.7.2
       '@typescript-eslint/parser': 6.19.1(eslint@8.56.0)(typescript@5.3.3)
       eslint: 8.56.0
       eslint-import-resolver-node: 0.3.9
@@ -2506,7 +2506,7 @@ packages:
     dependencies:
       '@types/draco3d': 1.4.9
       '@types/offscreencanvas': 2019.7.3
-      '@types/webxr': 0.5.10
+      '@types/webxr': 0.5.11
       draco3d: 1.5.7
       fflate: 0.6.10
       potpack: 1.0.2
