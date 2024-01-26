@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import localFont from "next/font/local";
+import { Suspense } from "react";
 
 const font = localFont({ src: "../../fonts/NotoSansJP-Regular.woff2" });
 
@@ -16,8 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja">
-      <body className={font.className}>{children}</body>
-    </html>
+    <Suspense>
+      <html lang="ja">
+        <body className={font.className}>{children}</body>
+      </html>
+    </Suspense>
   );
 }
