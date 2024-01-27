@@ -25,13 +25,13 @@ const getFullScreenTriangle = () => {
 
 const NetworkShader = () => {
   // Improve performance by reducing width and height
-  const width = window.innerWidth / 2;
-  const height = window.innerHeight / 2;
+  const width = window.innerWidth / 3;
+  const height = window.innerHeight / 3;
 
   const cameraRef = useRef<THREE.OrthographicCamera>(null!);
   const screenMeshRef = useRef<THREE.Mesh>(null!);
   const networkMaterialRef = useRef<NetworkMaterial>(null!);
-  
+
   const scene = new THREE.Scene();
   const renderTarget = useFBO(width, height, {
     minFilter: THREE.NearestFilter,
@@ -40,7 +40,7 @@ const NetworkShader = () => {
     stencilBuffer: false,
     type: THREE.FloatType,
   });
-  
+
   useEffect(() => {
     const onWindowResize = () => {
       networkMaterialRef.current.uniforms.uResolution.value = new THREE.Vector2(
@@ -66,21 +66,20 @@ const NetworkShader = () => {
 
     gl.render(scene, cameraRef.current);
 
-    (screenMeshRef.current.material as THREE.MeshBasicMaterial).map = renderTarget.texture;
+    (screenMeshRef.current.material as THREE.MeshBasicMaterial).map =
+      renderTarget.texture;
 
     gl.setRenderTarget(null);
   });
 
   return (
     <>
-    {createPortal(
-      <mesh
-        geometry={getFullScreenTriangle()}
-      >
-        <networkMaterial ref={networkMaterialRef} />
-      </mesh>,
-      scene
-    )}
+      {createPortal(
+        <mesh geometry={getFullScreenTriangle()}>
+          <networkMaterial ref={networkMaterialRef} />
+        </mesh>,
+        scene
+      )}
       <OrthographicCamera
         ref={cameraRef}
         makeDefault
@@ -92,10 +91,7 @@ const NetworkShader = () => {
         near={0}
         far={1}
       />
-      <mesh
-        ref={screenMeshRef}
-        geometry={getFullScreenTriangle()}
-      />
+      <mesh ref={screenMeshRef} geometry={getFullScreenTriangle()} />
     </>
   );
 };
@@ -104,8 +100,8 @@ function Scene() {
   return (
     <Canvas
       style={{
-        width: "100vw",
-        height: "100vh",
+        width: "100dvw",
+        height: "100dvh",
         filter: "blur(0.8rem)",
         mixBlendMode: "hard-light",
       }}

@@ -77,7 +77,7 @@ const fragmentShader = `
       m += line(gUv, p[4], p[i]);
 
       vec2 v = (p[i] - gUv) * 20.0;
-      float sparkle = 1.0 / dot(v, v);
+      float sparkle = 0.5 / dot(v, v);
 
       m += sparkle;
     }
