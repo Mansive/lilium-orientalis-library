@@ -2,6 +2,7 @@
 
 import styles from "./Card.module.css";
 import Image from "next/image";
+import ImageWithFallback from "../ImageWithFallback/ImageWithFallback";
 
 type CardInterface = {
   id: string;
@@ -27,8 +28,9 @@ function Card({
   return (
     <div className={styles.wrapper}>
       {cover ? (
-        <Image
+        <ImageWithFallback
           src={cover}
+          fallbackSrc={"/tevi.png"}
           alt="Cover image of a book"
           height={102}
           width={72}
