@@ -17,10 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Suspense>
-      <html lang="ja">
+    <html lang="ja">
+      <Suspense>
         <body className={font.className}>{children}</body>
-      </html>
-    </Suspense>
+      </Suspense>
+    </html>
   );
 }

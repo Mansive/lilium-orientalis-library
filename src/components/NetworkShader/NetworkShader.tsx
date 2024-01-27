@@ -1,7 +1,7 @@
 "use client";
 import { OrthographicCamera, useFBO } from "@react-three/drei";
 import { Canvas, createPortal, extend, useFrame } from "@react-three/fiber";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef, memo } from "react";
 import * as THREE from "three";
 
 import NetworkMaterial from "./NetworkMaterial";
@@ -113,4 +113,4 @@ function Scene() {
   );
 }
 
-export default Scene;
+export default memo(Scene);
