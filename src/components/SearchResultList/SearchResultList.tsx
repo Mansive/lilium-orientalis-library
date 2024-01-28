@@ -45,9 +45,12 @@ function SearchResultList({ searchResults }: SearchResultListInterface) {
           key={book.id}
           id={book.id}
           title={book.title}
+          true_title={book.true_title}
           sources={book.sources}
           size={round(book.size / 1048576, 2).toFixed(1)} // to mebibytes
           extension={book.extension}
+          description={book.description}
+          cover={book.cover}
         />
       ))}
     </div>
