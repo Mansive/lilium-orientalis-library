@@ -29,13 +29,13 @@ function Card({
     <div className={styles.wrapper}>
       {cover ? (
         <ImageWithFallback
+          unoptimized={true}
           src={cover}
           fallbackSrc={"/placeholder_dark.avif"}
           alt="Cover image of a book"
           height={102}
           width={72}
           className={styles.cover}
-          unoptimized={true}
         />
       ) : (
         <Image
