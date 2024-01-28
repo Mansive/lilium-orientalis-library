@@ -1,5 +1,5 @@
 "use client";
-import { OrthographicCamera, useFBO, Stats } from "@react-three/drei";
+import { OrthographicCamera, useFBO } from "@react-three/drei";
 import { Canvas, createPortal, extend, useFrame } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, memo } from "react";
 import * as THREE from "three";
@@ -107,7 +107,6 @@ function Scene() {
       }}
     >
       <Suspense>
-        <Stats />
         <NetworkShader />
       </Suspense>
     </Canvas>

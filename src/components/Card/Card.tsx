@@ -30,7 +30,7 @@ function Card({
       {cover ? (
         <ImageWithFallback
           src={cover}
-          fallbackSrc={"/tevi.png"}
+          fallbackSrc={"/placeholder_dark.avif"}
           alt="Cover image of a book"
           height={102}
           width={72}
@@ -38,12 +38,12 @@ function Card({
         />
       ) : (
         <Image
-          src={"/placeholder.avif"}
-          alt="Cover image of a book"
+          src={"/placeholder_light.avif"}
+          alt="Placeholder image"
           height={102}
           width={72}
           className={styles.cover}
-          unoptimized={true}
+          unoptimized={true} // Optimizing avif increases file size
         />
       )}
       <div className={styles.bookInfo}>
