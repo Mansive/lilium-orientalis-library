@@ -36,6 +36,7 @@ function Card({
           height={102}
           width={72}
           className={styles.cover}
+          referrerPolicy="no-referrer"
         />
       ) : (
         <Image
