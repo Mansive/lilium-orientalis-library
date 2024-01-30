@@ -12,11 +12,12 @@ export async function search(query: string) {
 }
 
 export async function vectorSearch(query: string) {
-  const results = await fetch("https://api.embaas.io/v1/embeddings/", {
+  const results = await fetch("https://api.mixedbread.ai/v1/embeddings/", {
     method: "POST",
     body: JSON.stringify({
-      texts: ["query: " + query],
+      texts: [query],
       model: "multilingual-e5-large",
+      instruction: "query"
     }),
     headers: {
       "Content-Type": "application/json",
