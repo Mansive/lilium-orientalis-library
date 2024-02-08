@@ -7,7 +7,7 @@ export async function search(query: string) {
     target: ["title"],
     prefix: "phrase",
     fuzziness: 0,
-    page: { size: 35, offset: 0 },
+    page: { size: 50, offset: 0 },
   });
 }
 
@@ -32,7 +32,7 @@ export async function vectorSearch(query: string) {
     embeddings["data"][0]["embedding"],
     {
       similarityFunction: "cosineSimilarity",
-      size: 35,
+      size: 50,
     }
   );
 }
