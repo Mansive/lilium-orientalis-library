@@ -49,7 +49,11 @@ function Card({
         />
       )}
       <div className={styles.bookInfo}>
-        <span className={styles.title}>{title}</span>
+        {/* <span className={styles.title}>{title}</span> */}
+        <span
+          className={styles.title}
+          dangerouslySetInnerHTML={{ __html: title }}
+        ></span>
         <span className={styles.true_title}>{true_title}</span>
         <span className={styles.source}>{sources.join(" | ")}</span>
       </div>

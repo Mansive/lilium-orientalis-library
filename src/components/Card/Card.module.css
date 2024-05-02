@@ -26,7 +26,23 @@
 }
 
 .title {
-  font-size: 1.2em;
+  font-size: 1.2em; 
+}
+
+.title em {
+  font-style: normal;
+  color: rgb(255, 156, 202);
+  animation: 2s ease-in-out alternate infinite colorshift;
+}
+
+@keyframes colorshift {
+  0% {
+    color: rgb(255, 156, 202);
+  }
+  100% {
+    /* color: rgb(136, 223, 255); */
+    color: rgb(149, 213, 255);
+  }
 }
 
 .true_title {
@@ -54,3 +70,4 @@
 .extension {
   font-size: 0.9em;
 }
+
