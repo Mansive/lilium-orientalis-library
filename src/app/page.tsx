@@ -66,9 +66,9 @@ export default function Home() {
             />
           </form>
         </div>
-        <div className={styles.searchSwitch}>
+        {/* <div className={styles.searchSwitch}>
           <SearchSwitch />
-        </div>
+        </div> */}
         {(status === "idle" || status === "loading") && (
           <div className={styles.spinner}>
             <Spinner
