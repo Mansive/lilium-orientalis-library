@@ -7,4 +7,6 @@ export interface Book {
   extension: string;
   description: string;
   cover: string;
+  thumbnail: string;
+  md5: string;
 }

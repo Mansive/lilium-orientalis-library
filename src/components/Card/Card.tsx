@@ -13,6 +13,8 @@ type CardInterface = {
   extension: string;
   description: string;
   cover: string;
+  thumbnail: string;
+  md5: string;
 };
 
 function Card({
@@ -24,9 +26,11 @@ function Card({
   extension,
   description,
   cover,
+  thumbnail,
+  md5,
 }: CardInterface) {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-unique-id={md5}>
       {cover ? (
         <ImageWithFallback
           unoptimized={true}

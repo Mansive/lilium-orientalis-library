@@ -51,6 +51,8 @@ function SearchResultList({ searchResults }: SearchResultListInterface) {
           extension={book.extension}
           description={book.description}
           cover={book.cover}
+          thumbnail={book.thumbnail}
+          md5={book.md5}
         />
       ))}
     </div>
