@@ -8,15 +8,19 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "migrate:books": "node scripts/migrate-books-db.mjs",
+    "verify:cjk-search": "node scripts/verify-cjk-search.mjs",
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@react-three/drei": "^9.109.2",
     "@react-three/fiber": "^8.16.8",
     "@types/three": "^0.167.1",
-    "@xata.io/client": "^0.30.0",
+    "drizzle-orm": "^0.45.1",
     "framer-motion": "^11.3.19",
     "next": "^14.2.5",
+    "pg": "^8.19.0",
+    "pg-copy-streams": "^7.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-feather": "^2.0.10",
@@ -24,9 +28,10 @@
   },
   "devDependencies": {
     "@types/node": "^20.14.12",
+    "@types/pg": "^8.16.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "eslint": "^9.8.0",
+    "eslint": "^8.57.1",
     "eslint-config-next": "14.2.5",
     "typescript": "^5.5.4"
   }
