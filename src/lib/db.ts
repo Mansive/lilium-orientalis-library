@@ -3,14 +3,27 @@ import { drizzle } from "drizzle-orm/neon-http";
 
 import * as schema from "@/lib/db/schema";
 
-const connectionString = process.env.DATABASE_URL;
-
-if (!connectionString) {
-  throw new Error("DATABASE_URL is required");
+function createDb(connectionString: string) {
+  const client = neon(connectionString);
+  return drizzle(client, { schema });
 }
 
-const client = neon(connectionString);
+let cachedConnectionString: string | undefined;
+let cachedDb: ReturnType<typeof createDb> | undefined;
 
-const db = drizzle(client, { schema });
+export function getDb() {
+  const connectionString = process.env.DATABASE_URL;
 
-export { db };
+  if (!connectionString) {
+    throw new Error("DATABASE_URL is required");
+  }
+
+  if (cachedDb && cachedConnectionString === connectionString) {
+    return cachedDb;
+  }
+
+  cachedDb = createDb(connectionString);
+  cachedConnectionString = connectionString;
+
+  return cachedDb;
+}

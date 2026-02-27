@@ -27,6 +27,8 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(results);
   } catch (error) {
+    console.error("Search API error", error);
+
     return customError("A strange error has ocurred", 500);
   }
 }

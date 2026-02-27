@@ -1,6 +1,6 @@
-import { sql } from "drizzle-orm";
+import { sql } from "drizzle-orm/sql";
 
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 
 const SEARCH_LIMIT = 50;
 const cjkRegex = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u;
@@ -40,6 +40,8 @@ function isCjkQuery(query: string) {
 }
 
 async function fullTextSearch(query: string) {
+  const db = getDb();
+
   const result = await db.execute(sql<RawSearchRow>`
     SELECT
       b.xata_id AS id,
@@ -63,6 +65,8 @@ async function fullTextSearch(query: string) {
 }
 
 async function cjkHybridSearch(query: string) {
+  const db = getDb();
+
   const result = await db.execute(sql<RawSearchRow>`
     WITH query_tokens AS (
       SELECT public.cjk_ngrams(regexp_replace(lower(${query}), '\\s+', '', 'g')) AS grams
