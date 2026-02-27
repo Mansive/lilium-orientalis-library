@@ -9,4 +9,5 @@ export interface Book {
   cover: string;
   thumbnail: string;
   md5: string;
+  author: string;
 }

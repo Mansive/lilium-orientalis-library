@@ -36,6 +36,7 @@ jobs:
         env:
           XATA_API_KEY: ${{ secrets.XATA_API_KEY }}
           EMBAAS_API_KEY: ${{ secrets.EMBAAS_API_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1

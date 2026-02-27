@@ -25,16 +25,10 @@ export async function GET(request: NextRequest) {
     const results =
       searchMode === "normal" ? await search(query) : await vectorSearch(query);
 
-    // Reduce network payload size for users
-    const records = JSON.parse(JSON.stringify(results))["records"];
-    records.forEach((book: Record<string, any>) => {
-      book.title = book.xata.highlight.title[0];
-      delete book.embeddings;
-      delete book.xata;
-    });
-
-    return NextResponse.json({ records });
+    return NextResponse.json(results);
   } catch (error) {
+    console.error("Search API error", error);
+
     return customError("A strange error has ocurred", 500);
   }
 }
