@@ -1,7 +1,7 @@
 import { search, vectorSearch } from "@/lib/search";
 import { NextRequest, NextResponse } from "next/server";
 
-export const runtime = "nodejs";
+export const runtime = "edge";
 
 function customError(msg: string, code: number) {
   return NextResponse.json({ message: msg }, { status: code });

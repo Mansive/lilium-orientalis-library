@@ -13,6 +13,7 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
     "@react-three/drei": "^9.109.2",
     "@react-three/fiber": "^8.16.8",
     "@types/three": "^0.167.1",

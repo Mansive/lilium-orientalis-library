@@ -1,9 +1,7 @@
-import { drizzle, type NodePgDatabase } from "drizzle-orm/node-postgres";
-import { Pool } from "pg";
+import { neon } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/neon-http";
 
 import * as schema from "@/lib/db/schema";
-
-type Database = NodePgDatabase<typeof schema>;
 
 const connectionString = process.env.DATABASE_URL;
 
@@ -11,23 +9,8 @@ if (!connectionString) {
   throw new Error("DATABASE_URL is required");
 }
 
-const globalForDb = globalThis as typeof globalThis & {
-  pgPool?: Pool;
-  drizzleDb?: Database;
-};
+const client = neon(connectionString);
 
-const pool =
-  globalForDb.pgPool ??
-  new Pool({
-    connectionString,
-    max: 10,
-  });
-
-const db = globalForDb.drizzleDb ?? drizzle(pool, { schema });
-
-if (process.env.NODE_ENV !== "production") {
-  globalForDb.pgPool = pool;
-  globalForDb.drizzleDb = db;
-}
+const db = drizzle(client, { schema });
 
 export { db };
