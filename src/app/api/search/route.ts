@@ -41,6 +41,16 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    if (message.includes("DATABASE_URL is not a valid URL")) {
+      return NextResponse.json(
+        {
+          message: "Server misconfiguration",
+          code: "INVALID_DATABASE_URL",
+        },
+        { status: 500 },
+      );
+    }
+
     if (message.includes("fetch failed")) {
       return NextResponse.json(
         {
