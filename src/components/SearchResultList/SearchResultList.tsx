@@ -37,7 +37,6 @@ function SearchResultList({ searchResults }: SearchResultListInterface) {
     var n = num * p * (1 + Number.EPSILON);
     return Math.round(n) / p;
   }
-
   return (
     <div ref={listRef} className={styles.searchResultList}>
       {searchResults?.map((book) => (
