@@ -40,8 +40,7 @@ function isCjkQuery(query: string) {
 }
 
 async function fullTextSearch(query: string) {
-  const db: { execute: (query: unknown) => Promise<{ rows: unknown[] }> } =
-    (await getDb()) as { execute: (query: unknown) => Promise<{ rows: unknown[] }> };
+  const db = getDb();
 
   const result = await db.execute(sql<RawSearchRow>`
     SELECT
@@ -66,8 +65,7 @@ async function fullTextSearch(query: string) {
 }
 
 async function cjkHybridSearch(query: string) {
-  const db: { execute: (query: unknown) => Promise<{ rows: unknown[] }> } =
-    (await getDb()) as { execute: (query: unknown) => Promise<{ rows: unknown[] }> };
+  const db = getDb();
 
   const result = await db.execute(sql<RawSearchRow>`
     WITH query_tokens AS (

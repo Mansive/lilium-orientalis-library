@@ -51,22 +51,6 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    if (
-      message.includes("@neondatabase/serverless") ||
-      message.includes("drizzle-orm/neon-http")
-    ) {
-      return NextResponse.json(
-        {
-          message: "Database driver initialization failed",
-          code: "DB_DRIVER_INIT_FAILED",
-        },
-        { status: 500 },
-      );
-    }
-
-    return NextResponse.json(
-      { message: "A strange error has ocurred", code: "UNKNOWN_SEARCH_ERROR" },
-      { status: 500 },
-    );
+    return customError("A strange error has ocurred", 500);
   }
 }
