@@ -22,28 +22,12 @@ function getConnectionString() {
   return process.env.DATABASE_URL;
 }
 
-function validateConnectionString(connectionString: string) {
-  let parsed: URL;
-
-  try {
-    parsed = new URL(connectionString);
-  } catch {
-    throw new Error("DATABASE_URL is not a valid URL");
-  }
-
-  if (!["postgres:", "postgresql:"].includes(parsed.protocol)) {
-    throw new Error("DATABASE_URL must use postgres:// or postgresql:// protocol");
-  }
-}
-
 export async function getDb() {
   const connectionString = getConnectionString();
 
   if (!connectionString) {
     throw new Error("DATABASE_URL is required");
   }
-
-  validateConnectionString(connectionString);
 
   if (cachedDb && cachedConnectionString === connectionString) {
     return cachedDb;

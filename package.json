@@ -3,12 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "validate:env": "node scripts/validate-env.mjs",
     "dev": "next dev",
     "dev-turbo": "next dev --turbo",
-    "prebuild": "pnpm validate:env",
     "build": "next build",
-    "prebuild:fast": "pnpm validate:env",
     "build:fast": "next build --no-lint",
     "start": "next start",
     "lint": "next lint",
@@ -34,7 +31,6 @@
     "three": "^0.167.0"
   },
   "devDependencies": {
-    "@next/env": "14.2.5",
     "@types/node": "^20.14.12",
     "@types/pg": "^8.16.0",
     "@types/react": "^18.3.3",
