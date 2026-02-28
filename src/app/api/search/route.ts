@@ -29,28 +29,6 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error("Search API error", error);
 
-    const message = error instanceof Error ? error.message : "Unknown error";
-
-    if (message.includes("DATABASE_URL is required")) {
-      return NextResponse.json(
-        {
-          message: "Server misconfiguration",
-          code: "MISSING_DATABASE_URL",
-        },
-        { status: 500 },
-      );
-    }
-
-    if (message.includes("fetch failed")) {
-      return NextResponse.json(
-        {
-          message: "Database connection failed",
-          code: "DATABASE_CONNECTION_FAILED",
-        },
-        { status: 500 },
-      );
-    }
-
     return customError("A strange error has ocurred", 500);
   }
 }
